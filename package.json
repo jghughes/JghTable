@@ -1,0 +1,23 @@
+{
+  "name": "jghtable",
+  "version": "1.0.0",
+  "description": "ZSUN Club static SPAs (AG Grid) deployed to Azure Blob Storage",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
+    "typecheck": "tsc --build --force",
+    "clean": "tsc --build --clean",
+    "serve": "http-server . -p 8080 -c-1",
+    "start": "npm run build && npm run serve",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "prettier": "^3.3.3",
+    "typescript": "^7.0.2"
+  }
+}
