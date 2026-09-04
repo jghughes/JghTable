@@ -36,13 +36,6 @@
       "dependsOn": ["build", "serve"],
       "dependsOrder": "sequence",
       "problemMatcher": []
-    },
-    {
-      "label": "build:watch",
-      "type": "npm",
-      "script": "build:watch",
-      "isBackground": true,
-      "problemMatcher": ["$tsc-watch"]
     }
   ]
 }

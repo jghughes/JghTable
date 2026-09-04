@@ -5,7 +5,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "name": "Dirt Racing Series 2026 (Edge)",
-      "url": "http://localhost:8080/dirt%20racing%20series%202026/index.html",
+      "url": "http://127.0.0.1:8080/dirt%20racing%20series%202026/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -14,7 +14,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Dirt Racing Series 2026 (Chrome)",
-      "url": "http://localhost:8080/dirt%20racing%20series%202026/index.html",
+      "url": "http://127.0.0.1:8080/dirt%20racing%20series%202026/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -23,7 +23,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "name": "WTRL ZRL League 2025-6 (Edge)",
-      "url": "http://localhost:8080/wtrl%20zrl%20league%202025-6/index.html",
+      "url": "http://127.0.0.1:8080/wtrl%20zrl%20league%202025-6/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -32,7 +32,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "WTRL ZRL League 2025-6 (Chrome)",
-      "url": "http://localhost:8080/wtrl%20zrl%20league%202025-6/index.html",
+      "url": "http://127.0.0.1:8080/wtrl%20zrl%20league%202025-6/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -41,7 +41,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "name": "ZSUN Club - Curve Fit Data (Edge)",
-      "url": "http://localhost:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
+      "url": "http://127.0.0.1:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -50,7 +50,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "ZSUN Club - Curve Fit Data (Chrome)",
-      "url": "http://localhost:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
+      "url": "http://127.0.0.1:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -59,7 +59,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "name": "ZSUN Club - Membership (Edge)",
-      "url": "http://localhost:8080/zsun%20club%20-%20membership/index.html",
+      "url": "http://127.0.0.1:8080/zsun%20club%20-%20membership/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -68,7 +68,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "ZSUN Club - Membership (Chrome)",
-      "url": "http://localhost:8080/zsun%20club%20-%20membership/index.html",
+      "url": "http://127.0.0.1:8080/zsun%20club%20-%20membership/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true

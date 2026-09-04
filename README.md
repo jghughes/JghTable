@@ -148,6 +148,27 @@ AG Grid itself remains a plain global `<script>` load from a CDN (not a module) 
 
 ---
 
+## Develop
+
+Open the repository in VS Code and press <kbd>F5</kbd>. Select the Edge or Chrome launch configuration when prompted.
+
+VS Code builds the app, starts the local server, and opens the calculator at `http://127.0.0.1:8080/index.html`, the port specified in launch.json
+
+## Housekeeping
+
+Format the project with Prettier:
+
+```powershell
+npm run format
+```
+
+Check formatting, types, and the production build without modifying files:
+
+```powershell
+npm run check
+```
+
+
 ## Deployment
 
 Deployment is via Azure CLI (`az storage blob upload-batch`) to the `customerzsun` storage account's `$web` container. **`shared-mastercopies` is deployed as its own top-level path** (`$web/shared-mastercopies/`), alongside each app's own path (`$web/<app-folder>/`) — apps resolve it via relative URL, exactly like they do locally.
