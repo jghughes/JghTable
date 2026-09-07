@@ -5,7 +5,7 @@
   "description": "ZSUN Club static SPAs (AG Grid) deployed to Azure Blob Storage",
   "type": "module",
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "typecheck": "tsc --build --force",
     "clean": "tsc --build --clean && node -e \"for (const path of ['shared-mastercopies/dist', 'dirt racing series 2026/dist', 'wtrl zrl league 2025-6/dist', 'zsun club - curve fit data/dist', 'zsun club - membership/dist']) require('fs').rmSync(path, { recursive: true, force: true })\"",
     "serve": "http-server . -p 8080 -c-1",
