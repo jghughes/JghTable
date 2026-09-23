@@ -24,7 +24,6 @@ JghTable/
 │   ├── dist/index.js       # Compiled ES module output (generated, gitignored)
 │   ├── index.html          # Entry point (loads dist/index.js as type="module")
 │   ├── index.css           # App-specific styles
-│   ├── 404.html             # Error page
 │   └── tsconfig.json
 ├── wtrl-zrl-league/               # same layout as above
 ├── zsun-club-curve-fits/   # same layout as above
@@ -138,7 +137,7 @@ AG Grid itself remains a plain global `<script>` load from a CDN (not a module) 
 
 ## Adding a New App
 
-1. Create a new folder, e.g. `JghTable/<new-app-name>/` with `src/index.ts`, `index.html`, `index.css`, `404.html`.
+1. Create a new folder, e.g. `JghTable/<new-app-name>/` with `src/index.ts`, `index.html`, `index.css`.
 2. Copy an existing app's `tsconfig.json` into the new folder (extends `../tsconfig.base.json`, references `../shared-mastercopies`).
 3. Add the new project path to the root [tsconfig.json](tsconfig.json)'s `references` array.
 4. In `src/index.ts`, import `GridManager` from `"../../shared-mastercopies/dist/base-grid.js"` and reference `../../shared-mastercopies/src/ag-grid-types.d.ts` for AG Grid types.
@@ -186,7 +185,7 @@ Deployment is via Azure CLI (`az storage blob upload-batch`) to the `customerzsu
 .\deploy-scripts\deploy-app.ps1 -App "zsun-club-membership"
 ```
 
-Each script runs `npm run build` (via `deploy-all.ps1`) or expects it to already be up to date (`deploy-shared.ps1`/`deploy-app.ps1` on their own), and uploads with `--exclude-pattern 'src/*;tsconfig.json;tsconfig.tsbuildinfo'` so only `dist/` and static assets (`index.html`, `.css`, `404.html`) are published.
+Each script runs `npm run build` (via `deploy-all.ps1`) or expects it to already be up to date (`deploy-shared.ps1`/`deploy-app.ps1` on their own), and uploads with `--exclude-pattern 'src/*;tsconfig.json;tsconfig.tsbuildinfo'` so only `dist/` and static assets (`index.html`, `.css`) are published.
 
 ---
 
