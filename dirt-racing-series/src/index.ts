@@ -11,34 +11,70 @@ interface RaceOption {
 
 const RACE_OPTIONS: RaceOption[] = [
   {
-    label: "stage 1 - points - Peaky Pave",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s1-ZSUN.json",
+    label: "stage 0 - points - Prologue: London 8 Reverse",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s0-ZSUN.json",
   },
   {
-    label: "stage 2 - TTR - ZG25 Queen",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s2-ZSUN.json",
+    label: "stage 1 - points - Cobbled Crown",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s1-ZSUN.json",
   },
   {
-    label: "stage 3 - points - Coast Crusher",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s3-ZSUN.json",
+    label: "stage 2 - TTR - BRAEk-fast Crits and Grits",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s2-ZSUN.json",
   },
   {
-    label: "stage 4 - points - Temples and Towers",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s4-ZSUN.json",
+    label: "stage 3 - points - Seaside Sprint",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s3-ZSUN.json",
   },
   {
-    label: "stage 5 - points - Downtown Dolphins",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s5-ZSUN.json",
+    label: "stage 4 - points - Three Sisters",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s4-ZSUN.json",
   },
   {
-    label: "stage 6 - iTT - Harrowgate Circuit Reverse",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-s6-ZSUN.json",
+    label: "stage 5 - points - Avon Flyer",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s5-ZSUN.json",
   },
   {
-    label: "Series - totals",
-    url: "https://customerzsun.blob.core.windows.net/dirt/12-series-ZSUN.json",
+    label: "stage 6 - iTT - Crepe Escape",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s6-ZSUN.json",
+  },
+  {
+    label: "Series 13 - totals",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-series-ZSUN.json",
   },
 ];
+// The following block is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
+// This is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
+// const RACE_OPTIONS: RaceOption[] = [
+//{
+//    label: "stage 1 - points - Peaky Pave",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s1-ZSUN.json",
+//  },
+// {
+//    label: "stage 2 - TTR - ZG25 Queen",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s2-ZSUN.json",
+//  },
+ // {
+//    label: "stage 3 - points - Coast Crusher",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s3-ZSUN.json",
+//  },
+//  {
+//    label: "stage 4 - points - Temples and Towers",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s4-ZSUN.json",
+//  },
+//  {
+//    label: "stage 5 - points - Downtown Dolphins",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s5-ZSUN.json",
+//  },
+//  {
+//    label: "stage 6 - iTT - Harrowgate Circuit Reverse",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s6-ZSUN.json",
+//  },
+//  {
+//    label: "Series - totals",
+//    url: "https://customerzsun.blob.core.windows.net/dirt/12-series-ZSUN.json",
+//  },
+//];
 
 const FALLBACK_DATA: unknown[] = [{ finishingPlacePoints: 0, rider: "John Doe" }];
 

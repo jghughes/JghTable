@@ -2,9 +2,9 @@
   "files": [],
   "references": [
     { "path": "shared-mastercopies" },
-    { "path": "dirt racing series 2026" },
-    { "path": "wtrl zrl league 2025-6" },
-    { "path": "zsun club - curve fit data" },
-    { "path": "zsun club - membership" }
+    { "path": "dirt-racing-series" },
+    { "path": "wtrl-zrl-league" },
+    { "path": "zsun-club-curve-fits" },
+    { "path": "zsun-club-membership" }
   ]
 }

@@ -4,8 +4,8 @@
     {
       "type": "pwa-msedge",
       "request": "launch",
-      "name": "Dirt Racing Series 2026 (Edge)",
-      "url": "http://127.0.0.1:8080/dirt%20racing%20series%202026/index.html",
+      "name": "Dirt Racing Series (Edge)",
+      "url": "http://127.0.0.1:8080/dirt-racing-series/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -13,8 +13,8 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Dirt Racing Series 2026 (Chrome)",
-      "url": "http://127.0.0.1:8080/dirt%20racing%20series%202026/index.html",
+      "name": "Dirt Racing Series (Chrome)",
+      "url": "http://127.0.0.1:8080/dirt-racing-series/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -22,8 +22,8 @@
     {
       "type": "pwa-msedge",
       "request": "launch",
-      "name": "WTRL ZRL League 2025-6 (Edge)",
-      "url": "http://127.0.0.1:8080/wtrl%20zrl%20league%202025-6/index.html",
+      "name": "WTRL ZRL League (Edge)",
+      "url": "http://127.0.0.1:8080/wtrl-zrl-league/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -31,8 +31,8 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "WTRL ZRL League 2025-6 (Chrome)",
-      "url": "http://127.0.0.1:8080/wtrl%20zrl%20league%202025-6/index.html",
+      "name": "WTRL ZRL League (Chrome)",
+      "url": "http://127.0.0.1:8080/wtrl-zrl-league/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -40,8 +40,8 @@
     {
       "type": "pwa-msedge",
       "request": "launch",
-      "name": "ZSUN Club - Curve Fit Data (Edge)",
-      "url": "http://127.0.0.1:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
+      "name": "ZSUN Club - Curve Fits (Edge)",
+      "url": "http://127.0.0.1:8080/zsun-club-curve-fits/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -49,8 +49,8 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "ZSUN Club - Curve Fit Data (Chrome)",
-      "url": "http://127.0.0.1:8080/zsun%20club%20-%20curve%20fit%20data/index.html",
+      "name": "ZSUN Club - Curve Fits (Chrome)",
+      "url": "http://127.0.0.1:8080/zsun-club-curve-fits/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -59,7 +59,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "name": "ZSUN Club - Membership (Edge)",
-      "url": "http://127.0.0.1:8080/zsun%20club%20-%20membership/index.html",
+      "url": "http://127.0.0.1:8080/zsun-club-membership/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -68,7 +68,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "ZSUN Club - Membership (Chrome)",
-      "url": "http://127.0.0.1:8080/zsun%20club%20-%20membership/index.html",
+      "url": "http://127.0.0.1:8080/zsun-club-membership/index.html",
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "build and serve",
       "sourceMaps": true
@@ -78,18 +78,18 @@
     {
       "name": "All apps (Edge)",
       "configurations": [
-        "Dirt Racing Series 2026 (Edge)",
-        "WTRL ZRL League 2025-6 (Edge)",
-        "ZSUN Club - Curve Fit Data (Edge)",
+        "Dirt Racing Series (Edge)",
+        "WTRL ZRL League (Edge)",
+        "ZSUN Club - Curve Fits (Edge)",
         "ZSUN Club - Membership (Edge)"
       ]
     },
     {
       "name": "All apps (Chrome)",
       "configurations": [
-        "Dirt Racing Series 2026 (Chrome)",
-        "WTRL ZRL League 2025-6 (Chrome)",
-        "ZSUN Club - Curve Fit Data (Chrome)",
+        "Dirt Racing Series (Chrome)",
+        "WTRL ZRL League (Chrome)",
+        "ZSUN Club - Curve Fits (Chrome)",
         "ZSUN Club - Membership (Chrome)"
       ]
     }

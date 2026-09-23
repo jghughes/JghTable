@@ -6,10 +6,10 @@ This repository contains multiple Single Page Applications (SPAs) hosted on Azur
 
 **Current Apps:**
 
-- **`dirt racing series 2026/`** - DIRT Racing Series results
-- **`wtrl zrl league 2025-6/`** - WTRL ZRL League results
-- **`zsun club - curve fit data/`** - ZSUN rider power curve-fit data
-- **`zsun club - membership/`** - ZSUN membership / rider stats
+- **`dirt-racing-series/`** - DIRT Racing Series results
+- **`wtrl-zrl-league/`** - WTRL ZRL League results
+- **`zsun-club-curve-fits/`** - ZSUN rider power curve-fit data
+- **`zsun-club-membership/`** - ZSUN membership / rider stats
 
 **Repository:** [https://github.com/jghughes/Zwift-Solution-2025](https://github.com/jghughes/Zwift-Solution-2025)
 
@@ -19,16 +19,16 @@ This repository contains multiple Single Page Applications (SPAs) hosted on Azur
 
 ```
 JghTable/
-├── dirt racing series 2026/
+├── dirt-racing-series/
 │   ├── src/index.ts        # App-specific configuration (authored)
 │   ├── dist/index.js       # Compiled ES module output (generated, gitignored)
 │   ├── index.html          # Entry point (loads dist/index.js as type="module")
 │   ├── index.css           # App-specific styles
 │   ├── 404.html             # Error page
 │   └── tsconfig.json
-├── wtrl zrl league 2025-6/       # same layout as above
-├── zsun club - curve fit data/   # same layout as above
-├── zsun club - membership/       # same layout as above
+├── wtrl-zrl-league/               # same layout as above
+├── zsun-club-curve-fits/   # same layout as above
+├── zsun-club-membership/       # same layout as above
 │
 ├── shared-mastercopies/
 │   ├── src/base-grid.ts        # Shared AG Grid framework (real ES module, exports GridManager)
@@ -70,7 +70,7 @@ npm install
 
 ## Local Development (VS Code, F5 debugging)
 
-1. Press **F5** and choose an app configuration (e.g. `Dirt Racing Series 2026 (Edge)` / `(Chrome)`), or one of the **All apps (Edge)** / **All apps (Chrome)** compounds to launch all four at once.
+1. Press **F5** and choose an app configuration (e.g. `Dirt Racing Series (Edge)` / `(Chrome)`), or one of the **All apps (Edge)** / **All apps (Chrome)** compounds to launch all four at once.
 2. This runs the `build and serve` task first — a full `tsc --build` followed by starting the `serve` static server — so you always debug freshly compiled output, then opens the app with the debugger attached (breakpoints, call stack, console all work against your `.ts` sources via source maps).
 3. To just run the static server without debugging: `npm run build && npm run serve`, then browse to `http://127.0.0.1:8080/<app folder>/index.html`.
 
@@ -183,7 +183,7 @@ Deployment is via Azure CLI (`az storage blob upload-batch`) to the `customerzsu
 .\deploy-scripts\deploy-shared.ps1
 
 # Or deploy a single app
-.\deploy-scripts\deploy-app.ps1 -App "zsun club - membership"
+.\deploy-scripts\deploy-app.ps1 -App "zsun-club-membership"
 ```
 
 Each script runs `npm run build` (via `deploy-all.ps1`) or expects it to already be up to date (`deploy-shared.ps1`/`deploy-app.ps1` on their own), and uploads with `--exclude-pattern 'src/*;tsconfig.json;tsconfig.tsbuildinfo'` so only `dist/` and static assets (`index.html`, `.css`, `404.html`) are published.

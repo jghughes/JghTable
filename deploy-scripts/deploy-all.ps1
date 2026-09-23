@@ -11,19 +11,21 @@ param(
 $ErrorActionPreference = "Stop"
 
 $scriptDir = $PSScriptRoot
-$apps = @(
-    "dirt racing series 2026",
-    "wtrl zrl league 2025-6",
-    "zsun club - curve fit data",
-    "zsun club - membership"
-)
+# maps each local app folder to the folder name it is published under in $web
+$apps = [ordered]@{
+    "dirt-racing-series"        = "dirt"
+    "wtrl-zrl-league"           = "zrl"
+    "zsun-club-curve-fits"      = "zsun-curve-fits"
+    "zsun-club-membership"      = "zsun-membership"
+}
 
 Write-Host "Deploying shared framework..." -ForegroundColor Cyan
 & (Join-Path $scriptDir "deploy-shared.ps1") -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName
 
-foreach ($app in $apps) {
-    Write-Host "`nDeploying app: $app..." -ForegroundColor Cyan
-    & (Join-Path $scriptDir "deploy-app.ps1") -App $app -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName
+foreach ($app in $apps.Keys) {
+    $targetFolder = $apps[$app]
+    Write-Host "`nDeploying app: $app -> $targetFolder..." -ForegroundColor Cyan
+    & (Join-Path $scriptDir "deploy-app.ps1") -App $app -TargetFolder $targetFolder -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName
 }
 
 Write-Host "`nAll deployments complete!" -ForegroundColor Green

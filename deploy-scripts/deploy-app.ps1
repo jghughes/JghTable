@@ -11,6 +11,9 @@
 .PARAMETER App
     Name of the app folder to deploy.
 
+.PARAMETER TargetFolder
+    Name of the folder under $web to publish to. Defaults to the app folder name.
+
 .PARAMETER StorageAccountName
     Azure Storage account hosting the static website.
 
@@ -20,12 +23,14 @@
 param(
     [Parameter(Mandatory = $true)]
     [ValidateSet(
-        "dirt racing series 2026",
-        "wtrl zrl league 2025-6",
-        "zsun club - curve fit data",
-        "zsun club - membership"
+        "dirt-racing-series",
+        "wtrl-zrl-league",
+        "zsun-club-curve-fits",
+        "zsun-club-membership"
     )]
     [string]$App,
+
+    [string]$TargetFolder = $App,
 
     [string]$StorageAccountName = "customerzsun",
     [string]$ResourceGroupName = ""
@@ -44,7 +49,7 @@ function Get-StorageAccountKey {
         [string]$ResourceGroupName
     )
 
-    $args = @(
+    $cliArgs = @(
         "storage", "account", "keys", "list",
         "--account-name", $StorageAccountName,
         "--query", "[0].value",
@@ -52,10 +57,10 @@ function Get-StorageAccountKey {
     )
 
     if (-not [string]::IsNullOrWhiteSpace($ResourceGroupName)) {
-        $args += @("--resource-group", $ResourceGroupName)
+        $cliArgs += @("--resource-group", $ResourceGroupName)
     }
 
-    $accountKey = & az @args
+    $accountKey = & az @cliArgs
     if ($LASTEXITCODE -ne 0 -or -not $accountKey) {
         throw "Failed to resolve an account key for storage account '$StorageAccountName'. Verify the account name and resource group are correct."
     }
@@ -162,7 +167,7 @@ function Show-UploadPreview {
 function Get-StorageWebsiteUrl {
     param([string]$StorageAccountName)
 
-    return "https://${StorageAccountName}.blob.core.windows.net/`$web/$App/index.html"
+    return "https://${StorageAccountName}.blob.core.windows.net/`$web/$TargetFolder/index.html"
 }
 
 function Get-UploadFileCount {
@@ -249,9 +254,9 @@ finally {
 
 Remove-SourceMaps -DistPath $distPath
 
-$existingBlobNames = Get-ExistingBlobNames -StorageAccountName $StorageAccountName -AccountKey $accountKey -Prefix "$App/"
+$existingBlobNames = Get-ExistingBlobNames -StorageAccountName $StorageAccountName -AccountKey $accountKey -Prefix "$TargetFolder/"
 
-Write-Host "The following $($existingBlobNames.Count) blob(s) will be DELETED from `$web/$App/ before upload:" -ForegroundColor Yellow
+Write-Host "The following $($existingBlobNames.Count) blob(s) will be DELETED from `$web/$TargetFolder/ before upload:" -ForegroundColor Yellow
 if ($existingBlobNames.Count -eq 0) {
     Write-Host "  (none)" -ForegroundColor Yellow
 }
@@ -263,8 +268,8 @@ else {
 Write-Host ""
 
 Write-Host "The following file(s) will be uploaded to `$web:" -ForegroundColor Yellow
-Show-UploadPreview -SourcePath (Join-Path $sourceFolder "dist") -Destination "$App/dist"
-Show-UploadPreview -SourcePath $sourceFolder -Destination $App
+Show-UploadPreview -SourcePath (Join-Path $sourceFolder "dist") -Destination "$TargetFolder/dist"
+Show-UploadPreview -SourcePath $sourceFolder -Destination $TargetFolder
 Write-Host ""
 
 $confirmation = Read-Host "Type 'yes' to proceed with deletion and upload, or anything else to abort"
@@ -274,12 +279,12 @@ if ($confirmation -ne "yes") {
 Write-Host ""
 
 if ($existingBlobNames.Count -gt 0) {
-    Remove-ExistingBlobs -StorageAccountName $StorageAccountName -AccountKey $accountKey -Prefix "$App/"
+    Remove-ExistingBlobs -StorageAccountName $StorageAccountName -AccountKey $accountKey -Prefix "$TargetFolder/"
 }
 Write-Host "Deleted $($existingBlobNames.Count) blob(s)" -ForegroundColor Green
 Write-Host ""
 
-Write-Host "Deploying '$App' to Azure Blob Storage..." -ForegroundColor Cyan
+Write-Host "Deploying '$App' to `$web/$TargetFolder ..." -ForegroundColor Cyan
 
 $distPath = Join-Path $sourceFolder "dist"
 if (-not (Test-Path $distPath)) {
@@ -287,9 +292,9 @@ if (-not (Test-Path $distPath)) {
 }
 
 $uploadedCount = 0
-$uploadedCount += Invoke-UploadBatch -SourcePath $distPath -Destination "$App/dist" -Pattern '*.js' -FolderName $App -AccountKey $accountKey
-$uploadedCount += Invoke-UploadBatch -SourcePath $sourceFolder -Destination $App -Pattern '*.html' -FolderName $App -AccountKey $accountKey
-$uploadedCount += Invoke-UploadBatch -SourcePath $sourceFolder -Destination $App -Pattern '*.css' -FolderName $App -AccountKey $accountKey
+$uploadedCount += Invoke-UploadBatch -SourcePath $distPath -Destination "$TargetFolder/dist" -Pattern '*.js' -FolderName $App -AccountKey $accountKey
+$uploadedCount += Invoke-UploadBatch -SourcePath $sourceFolder -Destination $TargetFolder -Pattern '*.html' -FolderName $App -AccountKey $accountKey
+$uploadedCount += Invoke-UploadBatch -SourcePath $sourceFolder -Destination $TargetFolder -Pattern '*.css' -FolderName $App -AccountKey $accountKey
 
 Write-Host "Uploaded $uploadedCount file(s)" -ForegroundColor Green
 Write-Host ""
