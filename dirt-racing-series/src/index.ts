@@ -80,8 +80,8 @@ const FALLBACK_DATA: unknown[] = [{ finishingPlacePoints: 0, rider: "John Doe" }
 
 const BASE_COLUMN_DEFS: ColumnDef[] = [
   {
-    headerName: "Place (by Pts)",
-    field: "finishingPlacePoints",
+    headerName: "Default rank",
+    field: "tableRowNumber",
     pinned: "left",
     type: "numericColumn",
     width: 60,
@@ -93,8 +93,9 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "Sprint-pts", field: "pointsSprint", type: "numericColumn" },
   { headerName: "Finish-pts", field: "pointsFinish", type: "numericColumn" },
   { headerName: "Total-pts", field: "pointsTotal", type: "numericColumn" },
+  { headerName: "Place-points", field: "prettyFinishingPlaceInDivisionByPoints", width: 60},
   { headerName: "Time", field: "finishTimeHHMMSS" },
-  { headerName: "Place (by Time)", field: "finishingPlaceTime", type: "numericColumn", width: 60 },
+  { headerName: "Place-time", field: "finishingPlaceTime", type: "numericColumn", width: 60 },
   { headerName: "League", field: "league", width: 150 },
   { headerName: "ZwiftID", field: "zwiftId" },
 ];
