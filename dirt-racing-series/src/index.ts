@@ -96,7 +96,8 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "Place-points", field: "prettyFinishingPlaceInDivisionByPoints", width: 60},
   { headerName: "Time", field: "finishTimeHHMMSS" },
   { headerName: "Place-time", field: "finishingPlaceTime", type: "numericColumn", width: 60 },
-  { headerName: "League", field: "league", width: 150 },
+  { headerName: "League", field: "league", width: 100 },
+  { headerName: "Category", field: "divisionCategory", width: 100 },
   { headerName: "ZwiftID", field: "zwiftId" },
 ];
 
