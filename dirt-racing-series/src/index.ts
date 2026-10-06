@@ -42,6 +42,34 @@ const RACE_OPTIONS: RaceOption[] = [
     label: "Series 13 - totals",
     url: "https://customerzsun.blob.core.windows.net/dirt/13-series-ZSUN-riders.json",
   },
+  {
+    label: "stage 0 - team - Prologue: London 8 Reverse",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s0-ZSUN-teams.json",
+  },
+  {
+    label: "stage 1 - team - Cobbled Crown",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s1-ZSUN-teams.json",
+  },
+  {
+    label: "stage 2 - team - BRAEk-fast Crits and Grits",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s2-ZSUN-teams.json",
+  },
+  {
+    label: "stage 3 - team - Seaside Sprint",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s3-ZSUN-teams.json",
+  },
+  {
+    label: "stage 4 - team - Three Sisters",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s4-ZSUN-teams.json",
+  },
+  {
+    label: "stage 5 - team - Avon Flyer",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s5-ZSUN-teams.json",
+  },
+  {
+    label: "stage 6 - team - Crepe Escape",
+    url: "https://customerzsun.blob.core.windows.net/dirt/13-s6-ZSUN-teams.json",
+  },
 ];
 // The following block is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
 // This is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
@@ -79,23 +107,18 @@ const RACE_OPTIONS: RaceOption[] = [
 const FALLBACK_DATA: unknown[] = [{ finishingPlacePoints: 0, rider: "John Doe" }];
 
 const BASE_COLUMN_DEFS: ColumnDef[] = [
-  {
-    headerName: "Default rank",
-    field: "tableRowNumber",
-    pinned: "left",
-    type: "numericColumn",
-    width: 60,
-  },
+  { headerName: "Rank (default)", field: "tableRowNumber", pinned: "left", type: "numericColumn", width: 60 },
+  { headerName: "Rank (time)", field: "finishingPlaceTime", pinned: "left", type: "numericColumn", width: 60 },
   { headerName: "Name", field: "rider", pinned: "left", width: 150 },
   { headerName: "Team", field: "team", width: 150 },
   { headerName: "Zone", field: "timeZone" },
-  { headerName: "KOM-pts", field: "pointsKom", type: "numericColumn" },
-  { headerName: "Sprint-pts", field: "pointsSprint", type: "numericColumn" },
-  { headerName: "Finish-pts", field: "pointsFinish", type: "numericColumn" },
-  { headerName: "Total-pts", field: "pointsTotal", type: "numericColumn" },
-  { headerName: "Place-points", field: "prettyFinishingPlaceInDivisionByPoints", width: 60},
+  { headerName: "KOM pts", field: "pointsKom", type: "numericColumn" },
+  { headerName: "Sprint pts", field: "pointsSprint", type: "numericColumn" },
+  { headerName: "Finish pts", field: "pointsFinish", type: "numericColumn" },
+  { headerName: "Total pts", field: "pointsTotal", type: "numericColumn" },
+  { headerName: "Place (by points in division)", field: "prettyFinishingPlaceInDivisionByPoints", width: 60},
   { headerName: "Time", field: "finishTimeHHMMSS" },
-  { headerName: "Place-time", field: "finishingPlaceTime", type: "numericColumn", width: 60 },
+  { headerName: "Place (by time in division)", field: "prettyFinishingPlaceInDivisionByTime", width: 60},
   { headerName: "League", field: "league", width: 100 },
   { headerName: "Category", field: "divisionCategory", width: 100 },
   { headerName: "ZwiftID", field: "zwiftId" },
