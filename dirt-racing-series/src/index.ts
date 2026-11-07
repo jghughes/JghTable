@@ -2,14 +2,86 @@
 import { GridManager } from "../../shared-mastercopies/dist/base-grid.js";
 
 // ============================================================================
-// CONFIGURATION
+// APP CONFIGURATION
 // ============================================================================
+const APP_NAME : string = "Dirt Racing Series app";
+
+interface SeasonRoundOption {
+  label: string;
+  seasonRoundNumber: string;
+}
+
 interface RaceOption {
   label: string;
   url: string;
 }
 
-const RACE_OPTIONS: RaceOption[] = [
+const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
+/*   { label: "Double Lucky - Series 14 ", seasonRoundNumber: "14" },
+ */  
+  { label: "Series EL - Series 13  ", seasonRoundNumber: "13" },
+  { label: "A Dirty Dozen - Series 12 ", seasonRoundNumber: "12" },
+  { label: "It Goes to 11 - Series 11 ", seasonRoundNumber: "11" },
+];
+
+const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
+
+/*   "14": [
+  {
+    label: "stage 1 - points - Royal Pump Room 8, Yorkshire",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s1-ZSUN-riders.json",
+  },
+  {
+    label: "stage 2 - points - Double Espresso, Paris",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s2-ZSUN-riders.json",
+  },
+  {
+    label: "stage 3 - TTR - Outer Scotland, Scotland",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s3-ZSUN-riders.json",
+  },
+  {
+    label: "stage 4 - points - Snowman with Grade finish, Watopia)",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s4-ZSUN-riders.json",
+  },
+  {
+    label: "stage 5 - points - Twilight Crit, Watopia",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s5-ZSUN-riders.json",
+  },
+  {
+    label: "stage 6 - iTT - Island Hopper, Makuri Islands",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s6-ZSUN-riders.json",
+  },
+  {
+    label: "Series 14 - totals",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-series-ZSUN-riders.json",
+  },
+  {
+    label: "stage 1 - team - Royal Pump Room 8, Yorkshire",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s1-ZSUN-teams.json",
+  },
+  {
+    label: "stage 2 - team - Double Espresso, Paris",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s2-ZSUN-teams.json",
+  },
+  {
+    label: "stage 3 - team - Outer Scotland, Scotland",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s3-ZSUN-teams.json",
+  },
+  {
+    label: "stage 4 - team - Snowman with Grade finish, Watopia",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s4-ZSUN-teams.json",
+  },
+  {
+    label: "stage 5 - team - Twilight Crit, Watopia",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s5-ZSUN-teams.json",
+  },
+  {
+    label: "stage 6 - team - Island Hopper, Makuri Islands",
+    url: "https://customerzsun.blob.core.windows.net/dirt/14-s6-ZSUN-teams.json",
+  },
+],
+ */
+  "13": [
   {
     label: "stage 0 - points - Prologue: London 8 Reverse",
     url: "https://customerzsun.blob.core.windows.net/dirt/13-s0-ZSUN-riders.json",
@@ -70,41 +142,70 @@ const RACE_OPTIONS: RaceOption[] = [
     label: "stage 6 - team - Crepe Escape",
     url: "https://customerzsun.blob.core.windows.net/dirt/13-s6-ZSUN-teams.json",
   },
-];
-// The following block is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
-// This is a commented-out duplicate of RACE_OPTIONS, possibly for reference or backup
-// const RACE_OPTIONS: RaceOption[] = [
-//{
-//    label: "stage 1 - points - Peaky Pave",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s1-ZSUN.json",
-//  },
-// {
-//    label: "stage 2 - TTR - ZG25 Queen",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s2-ZSUN.json",
-//  },
- // {
-//    label: "stage 3 - points - Coast Crusher",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s3-ZSUN.json",
-//  },
-//  {
-//    label: "stage 4 - points - Temples and Towers",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s4-ZSUN.json",
-//  },
-//  {
-//    label: "stage 5 - points - Downtown Dolphins",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s5-ZSUN.json",
-//  },
-//  {
-//    label: "stage 6 - iTT - Harrowgate Circuit Reverse",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-s6-ZSUN.json",
-//  },
-//  {
-//    label: "Series - totals",
-//    url: "https://customerzsun.blob.core.windows.net/dirt/12-series-ZSUN.json",
-//  },
-//];
+],
+  "12": [
+    {
+      label: "stage 1 - points - Peaky Pave",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s1-ZSUN-riders.json",
+    },
+    {
+      label: "stage 2 - TTR - ZG25 Queen",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s2-ZSUN-riders.json",
+    },
+    {
+      label: "stage 3 - points - Coast Crusher",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s3-ZSUN-riders.json",
+    },
+    {
+      label: "stage 4 - points - Temples and Towers",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s4-ZSUN-riders.json",
+    },
+    {
+      label: "stage 5 - points - Downtown Dolphins",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s5-ZSUN-riders.json",
+    },
+    {
+      label: "stage 6 - iTT - Harrowgate Circuit Reverse",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-s6-ZSUN-riders.json",
+    },
+    {
+      label: "Series 12 - totals",
+      url: "https://customerzsun.blob.core.windows.net/dirt/12-series-ZSUN-riders.json",
+    },
+  ],
+  "11": [
+    {
+      label: "stage 1 - points",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s1-ZSUN-riders.json",
+    },
+    {
+      label: "stage 2 - Finish time",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s2-ZSUN-riders.json",
+    },
+    {
+      label: "stage 3 - points",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s3-ZSUN-riders.json",
+    },
+    {
+      label: "stage 4 - points",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s4-ZSUN-riders.json",
+    },
+    {
+      label: "stage 5 - points - Downtown Dolphins",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s5-ZSUN-riders.json",
+    },
+    {
+      label: "stage 6 - points",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-s6-ZSUN-riders.json",
+    },
+    {
+      label: "Series 12 - totals",
+      url: "https://customerzsun.blob.core.windows.net/dirt/11-series-ZSUN-riders.json",
+    },
+  ]
+};
 
-const FALLBACK_DATA: unknown[] = [{ finishingPlacePoints: 0, rider: "John Doe" }];
+const FALLBACK_DATA: unknown[] = [{ tableRowNumber: 0, rider: "John Doe", team: "Team A", place: 99999 }];
 
 const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "Rank (default)", field: "tableRowNumber", pinned: "left", type: "numericColumn", width: 60 },
@@ -127,21 +228,39 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
 // ============================================================================
 // INITIALIZE GRID USING SHARED FRAMEWORK
 // ============================================================================
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Populate the race selector dropdown
+  const seasonSelector = document.getElementById("seasonRoundSelector") as HTMLSelectElement;
   const raceSelector = document.getElementById("raceSelector") as HTMLSelectElement;
-  RACE_OPTIONS.forEach((option) => {
+
+  SEASON_ROUND_OPTIONS.forEach((season) => {
     const opt = document.createElement("option");
-    opt.value = option.url;
-    opt.textContent = option.label;
-    raceSelector.appendChild(opt);
+    opt.value = season.seasonRoundNumber;
+    opt.textContent = season.label;
+    seasonSelector.appendChild(opt);
   });
-  // Default to first race
-  raceSelector.value = RACE_OPTIONS[0]!.url;
+
+  seasonSelector.value = SEASON_ROUND_OPTIONS[0]!.seasonRoundNumber; // default to the latest season
+
+  // Returns the URL of the first race, or undefined if the season has no races
+  function populateRaceSelector(season: string): string | undefined {
+    const races = RACE_OPTIONS_BY_SEASON[season] ?? [];
+    raceSelector.innerHTML = "";
+    races.forEach((race) => {
+      const opt = document.createElement("option");
+      opt.value = race.url;
+      opt.textContent = race.label;
+      raceSelector.appendChild(opt);
+    });
+    raceSelector.disabled = races.length === 0;
+    return races[0]?.url;
+  }
+
+  const initialUrl = populateRaceSelector(seasonSelector.value);
 
   const gridManager = new GridManager({
-    appName: "ZRL 2026 Round 3",
-    dataUrl: raceSelector.value,
+    appName: APP_NAME,
+    dataUrl: initialUrl ?? "",
     fallbackData: FALLBACK_DATA,
     baseColumnDefs: BASE_COLUMN_DEFS,
     rowHeight: 25,
@@ -155,7 +274,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   gridManager.initialize();
 
-  // Reload grid data when a different race is selected
+  seasonSelector.addEventListener("change", function () {
+    const firstUrl = populateRaceSelector(seasonSelector.value);
+    if (firstUrl) gridManager.loadData(firstUrl);
+  });
+
   raceSelector.addEventListener("change", function () {
     gridManager.loadData(raceSelector.value);
   });

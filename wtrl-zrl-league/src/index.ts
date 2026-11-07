@@ -4,6 +4,7 @@ import { GridManager } from "../../shared-mastercopies/dist/base-grid.js";
 // ============================================================================
 // APP CONFIGURATION
 // ============================================================================
+const APP_NAME : string = "WTRL Zwift Racing League app";
 
 interface SeasonRoundOption {
   label: string;
@@ -157,8 +158,6 @@ const FALLBACK_DATA: unknown[] = [
     route: "long",
     place: 99999,
     time: "00:00:00",
-    "rider-name": "John Doe",
-    "rider-flag": "USA",
     gender: "O",
     competition: "Open regular",
     league: "Cherry",
@@ -219,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const initialUrl = populateRaceSelector(seasonSelector.value);
 
   const gridManager = new GridManager({
-    appName: "WTRL Zwift Racing League app",
+    appName: APP_NAME,
     dataUrl: initialUrl ?? "",
     fallbackData: FALLBACK_DATA,
     baseColumnDefs: BASE_COLUMN_DEFS,
