@@ -58,28 +58,6 @@ function copyTextToClipboard(text: unknown): void {
   fallbackCopyExecCommand(str);
 }
 
-// Writes two clipboard representations at once: a rich text/html table for
-// apps that understand it (Excel, Sheets, Word - they split into real columns
-// from the table markup, not by delimiter) and a plain-text fallback (e.g.
-// comma-delimited CSV) for apps that only read text/plain (Notepad, a
-// <textarea>, a terminal). Falls back to plain-text-only copy if the
-// multi-format Clipboard API is unavailable or rejects the write.
-function copyTableToClipboard(plainText: string, htmlText: string): void {
-  if (typeof ClipboardItem !== "undefined" && typeof navigator.clipboard?.write === "function") {
-    try {
-      const item = new ClipboardItem({
-        "text/plain": new Blob([plainText], { type: "text/plain" }),
-        "text/html": new Blob([htmlText], { type: "text/html" }),
-      });
-      navigator.clipboard.write([item]).catch(() => copyTextToClipboard(plainText));
-      return;
-    } catch (e) {
-      console.warn("Multi-format clipboard write failed, falling back to plain text", e);
-    }
-  }
-  copyTextToClipboard(plainText);
-}
-
 function fallbackCopyExecCommand(text: string): void {
   try {
     const ta = document.createElement("textarea");
@@ -207,70 +185,6 @@ export class GridManager implements IGridManager {
     }
   }
 
-  private csvEscapeField(value: unknown): string {
-    if (value == null) return "";
-    const str = String(value);
-    if (/[",\r\n]/.test(str)) {
-      return `"${str.replace(/"/g, '""')}"`;
-    }
-    return str;
-  }
-
-  // Returns the selected rows' data in display order, or null if fewer than 2
-  // rows are selected (in which case the single-cell copy handler should run instead).
-  private getSelectedRowsInOrder(): unknown[] | null {
-    const api = this.gridOptions?.api;
-    if (!api?.getSelectedNodes || !api.forEachNodeAfterFilterAndSort) return null;
-
-    if (api.getSelectedNodes().length < 2) return null;
-
-    const orderedRows: unknown[] = [];
-    api.forEachNodeAfterFilterAndSort((node) => {
-      if (node.isSelected()) orderedRows.push(node.data);
-    });
-    return orderedRows;
-  }
-
-  // Plain-text representation (comma-delimited CSV) for consumers that only
-  // understand text/plain, e.g. Notepad or a <textarea>.
-  private buildCsvFromRows(rows: unknown[]): string {
-    const columns = this.config.baseColumnDefs;
-    const header = columns.map((c) => this.csvEscapeField(c.headerName)).join(",");
-    const lines = rows.map((row) =>
-      columns
-        .map((c) => this.csvEscapeField(c.field ? (row as Record<string, unknown>)[c.field] : ""))
-        .join(",")
-    );
-    return [header, ...lines].join("\r\n");
-  }
-
-  // Rich text/html representation for consumers that split clipboard data
-  // into real columns/cells from table markup, e.g. Excel, Sheets, Word.
-  private buildHtmlTableFromRows(rows: unknown[]): string {
-    const columns = this.config.baseColumnDefs;
-    const headerCells = columns.map((c) => `<th>${escapeHtml(c.headerName)}</th>`).join("");
-    const bodyRows = rows
-      .map((row) => {
-        const cells = columns
-          .map(
-            (c) => `<td>${escapeHtml(c.field ? (row as Record<string, unknown>)[c.field] : "")}</td>`
-          )
-          .join("");
-        return `<tr>${cells}</tr>`;
-      })
-      .join("");
-    return `<table><thead><tr>${headerCells}</tr></thead><tbody>${bodyRows}</tbody></table>`;
-  }
-
-  private handleGridKeyDown = (ev: KeyboardEvent): void => {
-    if (!(ev.ctrlKey || ev.metaKey) || (ev.key !== "c" && ev.key !== "C")) return;
-    const rows = this.getSelectedRowsInOrder();
-    if (rows == null) return; // fewer than 2 rows selected; let the per-cell handler copy instead
-    ev.preventDefault();
-    ev.stopPropagation();
-    copyTableToClipboard(this.buildCsvFromRows(rows), this.buildHtmlTableFromRows(rows));
-  };
-
   initializeGrid(): void {
     const eGridDiv = document.getElementById("myGrid");
     if (!eGridDiv) {
@@ -279,8 +193,6 @@ export class GridManager implements IGridManager {
     }
 
     eGridDiv.innerHTML = "";
-    // Capture phase so multi-row copy runs before the per-cell copy handler sees the event.
-    eGridDiv.addEventListener("keydown", this.handleGridKeyDown, true);
     this.gridOptions = this.createGridOptions();
 
     try {

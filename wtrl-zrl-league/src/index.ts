@@ -16,12 +16,49 @@ interface RaceOption {
 }
 
 const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
+  { label: "Season/Round 21: 2026/27 Round 2", seasonRoundNumber: "21" },
   { label: "Season/Round 20: 2026/27 Round 1", seasonRoundNumber: "20" },
   { label: "Season/Round 19: 2025/26 Round 4", seasonRoundNumber: "19" },
-  { label: "Season 18: 2025/26 Round 3", seasonRoundNumber: "18" },
+  { label: "Season/Round 18: 2025/26 Round 3", seasonRoundNumber: "18" },
 ];
 
 const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
+
+  "21": [
+
+    {
+      label: "Race 1 - TTT- London Calling, London",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r1-ZSUN.json",
+    },
+    {
+      label: "Race 2 - Scratch - Muir And The Mountain, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r2-ZSUN.json",
+    },
+    {
+      label: "Race 3 - Points - Bon Voyage, France",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r3-ZSUN.json",
+    },
+    {
+      label: "Race 4 - ROTruth - No Sleep Till Brooklyn, NYC",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r4-ZSUN.json",
+    },
+    {
+      label: "Race 5 - Scratch - Miles of Isles, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r5-ZSUN.json",
+    },
+    {
+      label: "Race 6 - Points - Sprinter's Playground, Makuri Islands",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-r6-ZSUN.json",
+    },
+    {
+      label: "Series - Cumulative time",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-yellow-jersey-ZSUN.json",
+    },
+    {
+      label: "Series - Total points",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-green-jersey-ZSUN.json",
+    },
+  ],
   "20": [
     {
       label: "Race 1 - Scratch - Innsbruckring, Austria",
