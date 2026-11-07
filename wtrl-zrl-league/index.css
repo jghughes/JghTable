@@ -16,7 +16,7 @@ h2 {
   margin: 0 0 0.75em 0;
   font-size: 16px;
   font-weight: 400;
-  color: #666;
+  color: var(--text-muted);
 }
 
 /* Controls row */
@@ -30,10 +30,11 @@ h2 {
 #raceSelector {
   padding: 6px 10px;
   font-size: 14px;
-  border: 1px solid #b0b0b0;
+  border: 1px solid var(--border);
   border-radius: 4px;
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  background: #fff;
+  background: var(--surface-input);
+  color: var(--text);
 }
 
 /* Filter input */

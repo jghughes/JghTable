@@ -195,7 +195,7 @@ Each script runs `npm run build` (via `deploy-all.ps1`) or expects it to already
 - **Grid not initializing:** check the browser console (F12) for errors, confirm `<script type="module" src="./dist/index.js">` loaded (Network tab, no 404), and that `npm run build` has been run.
 - **Styles missing:** confirm `../shared-mastercopies/base-grid.css` resolves (both locally and once deployed, `shared-mastercopies` must exist at the same relative level as the app folder).
 - **Deployed changes not visible:** hard refresh (`Ctrl+F5`), and allow a minute for Azure edge caching. Also confirm you redeployed `shared-mastercopies` if you changed the shared framework.
-
+- **Not logged in to Azure CLI (or session expired). Run 'az login' and try again.:** The required login tenant id is displayed in the error message. Type az login --tenant TENANT_ID
 ---
 
 ## Related Resources
@@ -203,4 +203,5 @@ Each script runs `npm run build` (via `deploy-all.ps1`) or expects it to already
 - [AG Grid Documentation](https://www.ag-grid.com/javascript-data-grid/)
 - [Azure Blob Storage Static Websites](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
 - [Azure CLI Reference](https://learn.microsoft.com/en-us/cli/azure/storage/blob)
+- [Azure CLI Login Reference](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-managed-identity?view=azure-cli-latest&tryIt=true&source=docs#code-try-0)
 - [TypeScript](https://www.typescriptlang.org/)

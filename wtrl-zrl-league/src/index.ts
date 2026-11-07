@@ -12,27 +12,27 @@ interface RaceOption {
 const RACE_OPTIONS: RaceOption[] = [
   {
     label: "Race 1 - TTT - Hell of the North, France",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r1-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r1-ZSUN.json",
   },
   {
     label: "Race 2 - Points - The Classic, Watopia",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r2-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r2-ZSUN.json",
   },
   {
     label: "Race 3 - Scratch - Croissant, France",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r3-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r3-ZSUN.json",
   },
   {
     label: "Race 4 - Points - Double Span Spin, New York",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r4-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r4-ZSUN.json",
   },
   {
     label: "Series - Cumulative time",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-yellow-jersey-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-yellow-jersey-ZSUN.json",
   },
   {
     label: "Series - Total points",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-green-jersey-ZSUN.json",
+    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-green-jersey-ZSUN.json",
   },
 ];
 

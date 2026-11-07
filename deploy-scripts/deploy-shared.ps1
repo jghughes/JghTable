@@ -44,12 +44,21 @@ function Get-StorageAccountKey {
         $args += @("--resource-group", $ResourceGroupName)
     }
 
-    $accountKey = & az @args
-    if ($LASTEXITCODE -ne 0 -or -not $accountKey) {
-        throw "Failed to resolve an account key for storage account '$StorageAccountName'. Verify the account name and resource group are correct."
+    $maxAttempts = 3
+    $output = $null
+    for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
+        $output = & az @args 2>&1
+        if ($LASTEXITCODE -eq 0 -and $output) {
+            return ($output | Out-String).Trim()
+        }
+        if ($attempt -lt $maxAttempts) {
+            Write-Warning "Attempt $attempt of $maxAttempts to resolve the account key failed; retrying..."
+            Start-Sleep -Seconds (2 * $attempt)
+        }
     }
 
-    return $accountKey.Trim()
+    $details = ($output | Out-String).Trim()
+    throw "Failed to resolve an account key for storage account '$StorageAccountName' after $maxAttempts attempts. Azure CLI output: $details`nIf this is a connection error, check your network/VPN/proxy and run 'az login'; otherwise verify the account name and resource group."
 }
 
 function Test-StaticWebsiteEnabled {
