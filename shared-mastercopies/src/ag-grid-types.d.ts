@@ -28,12 +28,19 @@ interface DefaultColDef {
   minWidth?: number;
 }
 
+interface RowNode {
+  data: unknown;
+  isSelected(): boolean;
+}
+
 interface GridApi {
   setRowData?(data: unknown[]): void;
   showNoRowsOverlay?(): void;
   hideOverlay?(): void;
   showLoadingOverlay?(): void;
   setQuickFilter?(value: string): void;
+  getSelectedNodes?(): RowNode[];
+  forEachNodeAfterFilterAndSort?(callback: (node: RowNode) => void): void;
 }
 
 interface GridOptions {
