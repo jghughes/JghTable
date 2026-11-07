@@ -183,7 +183,6 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "Gender", field: "gender" },
   { headerName: "Competition", field: "competition", width: 150 },
   { headerName: "League", field: "league" },
-  { headerName: "Flag", field: "rider-flag" },
 ];
 
 // ============================================================================
