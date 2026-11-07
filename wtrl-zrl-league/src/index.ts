@@ -4,37 +4,115 @@ import { GridManager } from "../../shared-mastercopies/dist/base-grid.js";
 // ============================================================================
 // APP CONFIGURATION
 // ============================================================================
+
+interface SeasonRoundOption {
+  label: string;
+  seasonRoundNumber: string;
+}
+
 interface RaceOption {
   label: string;
   url: string;
 }
 
-const RACE_OPTIONS: RaceOption[] = [
-  {
-    label: "Race 1 - TTT - Hell of the North, France",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r1-ZSUN.json",
-  },
-  {
-    label: "Race 2 - Points - The Classic, Watopia",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r2-ZSUN.json",
-  },
-  {
-    label: "Race 3 - Scratch - Croissant, France",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r3-ZSUN.json",
-  },
-  {
-    label: "Race 4 - Points - Double Span Spin, New York",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r4-ZSUN.json",
-  },
-  {
-    label: "Series - Cumulative time",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-yellow-jersey-ZSUN.json",
-  },
-  {
-    label: "Series - Total points",
-    url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-green-jersey-ZSUN.json",
-  },
+const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
+  { label: "Season/Round 20: 2026/27 Round 1", seasonRoundNumber: "20" },
+  { label: "Season/Round 19: 2025/26 Round 4", seasonRoundNumber: "19" },
+  { label: "Season 18: 2025/26 Round 3", seasonRoundNumber: "18" },
 ];
+
+const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
+  "20": [
+    {
+      label: "Race 1 - Scratch - Innsbruckring, Austria",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r1-ZSUN.json",
+    },
+    {
+      label: "Race 2 - Points - Urumaze, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r2-ZSUN.json",
+    },
+    {
+      label: "Race 3 - TTT - Figure 8 Reverse, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r3-ZSUN.json",
+    },
+    {
+      label: "Race 4 - Scratch - Green to Screen, NYC",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r4-ZSUN.json",
+    },
+    {
+      label: "Race 5 - Points - Spiral Summit, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-r5-ZSUN.json",
+    },
+    {
+      label: "Series - Cumulative time",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-yellow-jersey-ZSUN.json",
+    },
+    {
+      label: "Series - Total points",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr20-green-jersey-ZSUN.json",
+    },
+  ],
+  "19": [
+    {
+      label: "Race 1 - TTT - Hell of the North, France",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r1-ZSUN.json",
+    },
+    {
+      label: "Race 2 - Points - The Classic, Watopia",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r2-ZSUN.json",
+    },
+    {
+      label: "Race 3 - Scratch - Croissant, France",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r3-ZSUN.json",
+    },
+    {
+      label: "Race 4 - Points - Double Span Spin, New York",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-r4-ZSUN.json",
+    },
+    {
+      label: "Series - Cumulative time",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-yellow-jersey-ZSUN.json",
+    },
+    {
+      label: "Series - Total points",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr19-green-jersey-ZSUN.json",
+    },
+  ],
+  "18": [
+    {
+      label: "Race 1 - TTT - Neon Shore Loop, Makuri Islands",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r1-ZSUN.json",
+    },
+    {
+      label: "Race 2 - Points - 2019 World's Harrogate Circuit, Yorkshire",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r2-ZSUN.json",
+    },
+    {
+      label: "Race 3 - Scratch - Countryside Tour, Makuri Islands",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r3-ZSUN.json",
+    },
+    {
+      label: "Race 4 - TTT - Roule Ma Poule, France",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r4-ZSUN.json",
+    },
+    {
+      label: "Race 5 - Points - Cobbled Climbs, Richmond",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r5-ZSUN.json",
+    },
+    {
+      label: "Race 6 - Scratch - Greatest London Loop, London",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-r6-ZSUN.json",
+    },
+    {
+      label: "Series - Cumulative time",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-yellow-jersey-ZSUN.json",
+    },
+    {
+      label: "Series - Total points",
+      url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr18-green-jersey-ZSUN.json",
+    },
+  ],
+};
 
 const FALLBACK_DATA: unknown[] = [
   {
@@ -74,21 +152,39 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
 // ============================================================================
 // INITIALIZE GRID USING SHARED FRAMEWORK
 // ============================================================================
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Populate the race selector dropdown
+  const seasonSelector = document.getElementById("seasonRoundSelector") as HTMLSelectElement;
   const raceSelector = document.getElementById("raceSelector") as HTMLSelectElement;
-  RACE_OPTIONS.forEach((option) => {
+
+  SEASON_ROUND_OPTIONS.forEach((season) => {
     const opt = document.createElement("option");
-    opt.value = option.url;
-    opt.textContent = option.label;
-    raceSelector.appendChild(opt);
+    opt.value = season.seasonRoundNumber;
+    opt.textContent = season.label;
+    seasonSelector.appendChild(opt);
   });
-  // Default to first race
-  raceSelector.value = RACE_OPTIONS[0]!.url;
+
+  seasonSelector.value = SEASON_ROUND_OPTIONS[0]!.seasonRoundNumber; // default to the latest season
+
+  // Returns the URL of the first race, or undefined if the season has no races
+  function populateRaceSelector(season: string): string | undefined {
+    const races = RACE_OPTIONS_BY_SEASON[season] ?? [];
+    raceSelector.innerHTML = "";
+    races.forEach((race) => {
+      const opt = document.createElement("option");
+      opt.value = race.url;
+      opt.textContent = race.label;
+      raceSelector.appendChild(opt);
+    });
+    raceSelector.disabled = races.length === 0;
+    return races[0]?.url;
+  }
+
+  const initialUrl = populateRaceSelector(seasonSelector.value);
 
   const gridManager = new GridManager({
-    appName: "ZRL 2026 Round 3",
-    dataUrl: raceSelector.value,
+    appName: "WTRL Zwift Racing League app",
+    dataUrl: initialUrl ?? "",
     fallbackData: FALLBACK_DATA,
     baseColumnDefs: BASE_COLUMN_DEFS,
     rowHeight: 25,
@@ -102,7 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   gridManager.initialize();
 
-  // Reload grid data when a different race is selected
+  seasonSelector.addEventListener("change", function () {
+    const firstUrl = populateRaceSelector(seasonSelector.value);
+    if (firstUrl) gridManager.loadData(firstUrl);
+  });
+
   raceSelector.addEventListener("change", function () {
     gridManager.loadData(raceSelector.value);
   });

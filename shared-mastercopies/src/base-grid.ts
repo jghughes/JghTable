@@ -108,11 +108,15 @@ export class GridManager implements IGridManager {
   config: GridManagerConfig;
   gridOptions: GridOptions | null;
   private _currentData: unknown[];
+  private _abortController: AbortController | null;
+  private _requestId: number;
 
   constructor(config: GridManagerConfig) {
     this.config = config;
     this.gridOptions = null;
     this._currentData = [];
+    this._abortController = null;
+    this._requestId = 0;
   }
 
   createGridOptions(): GridOptions {
@@ -205,6 +209,13 @@ export class GridManager implements IGridManager {
       this.config.dataUrl = url;
     }
 
+    // Cancel any in-flight request so its response can never overwrite a newer one.
+    this._abortController?.abort();
+    const controller = new AbortController();
+    this._abortController = controller;
+    const requestId = ++this._requestId;
+    const isStale = (): boolean => requestId !== this._requestId;
+
     if (this.gridOptions?.api?.showLoadingOverlay) {
       try {
         this.gridOptions.api.showLoadingOverlay();
@@ -213,7 +224,7 @@ export class GridManager implements IGridManager {
       }
     }
 
-    fetch(this.config.dataUrl)
+    fetch(this.config.dataUrl, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) {
           let message = "";
@@ -236,9 +247,12 @@ export class GridManager implements IGridManager {
         return response.json();
       })
       .then((data) => {
+        if (isStale()) return;
         this.safeSetRowData(data);
       })
       .catch((err: unknown) => {
+        if (isStale() || (err instanceof DOMException && err.name === "AbortError")) return;
+
         let errorMsg = err instanceof Error ? err.message : String(err);
         if (err instanceof TypeError && errorMsg.includes("Failed to fetch")) {
           errorMsg =
