@@ -16,15 +16,15 @@ interface RaceOption {
 }
 
 const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
-  { label: "Season/Round 21: 2026/27 Round 2", seasonRoundNumber: "21" },
-  { label: "Season/Round 20: 2026/27 Round 1", seasonRoundNumber: "20" },
-  { label: "Season/Round 19: 2025/26 Round 4", seasonRoundNumber: "19" },
-  { label: "Season/Round 18: 2025/26 Round 3", seasonRoundNumber: "18" },
+/*   { label: "Season-Round 21 - 2026/27 Round 2 ", seasonRoundNumber: "21" },
+ */  { label: "Season-Round 20 - 2026/27 Round 1 ", seasonRoundNumber: "20" },
+  { label: "Season-Round 19 - 2025/26 Round 4 ", seasonRoundNumber: "19" },
+  { label: "Season-Round 18 - 2025/26 Round 3 ", seasonRoundNumber: "18" },
 ];
 
 const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
 
-  "21": [
+/*   "21": [
 
     {
       label: "Race 1 - TTT- London Calling, London",
@@ -58,7 +58,7 @@ const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
       label: "Series - Total points",
       url: "https://customerzsun.blob.core.windows.net/wtrl-zrl/sr21-green-jersey-ZSUN.json",
     },
-  ],
+  ], */
   "20": [
     {
       label: "Race 1 - Scratch - Innsbruckring, Austria",
