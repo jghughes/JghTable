@@ -47,7 +47,11 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "vELO rating", field: "velo_rating_30_days", type: "numericColumn" },
   { headerName: "vELO cat", field: "velo_cat_name_30_days" },
   { headerName: "vELO cat", field: "velo_cat_num_30_days", type: "numericColumn" },
-  { headerName: "age", field: "velo_age_group" },
+  { headerName: "age group", field: "velo_age_group" },
+  { headerName: "age", 
+    field: "zwift_age_years", 
+    type: "numericColumn", 
+    valueFormatter: (params) => params.value?.toFixed(0) },
   {
     headerName: "height (cm)",
     field: "zwift_height_cm",
