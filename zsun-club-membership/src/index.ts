@@ -45,8 +45,7 @@ const BASE_COLUMN_DEFS: ColumnDef[] = [
   { headerName: "women cat", field: "cat_women", cellStyle: { textAlign: "center" }, width: 80 },
   { headerName: "ZR.app rating", field: "velo_cat_label", width: 130 },
   { headerName: "zwiftID", field: "zwift_id" },
-
-  // { headerName: "frontal area (m²)", field: "frontal_area_m2", type: 'numericColumn', width: 80, valueFormatter: params => params.value?.toFixed(2) },
+  { headerName: "team", field: "team_names", cellStyle: { textAlign: "center" }, width: 80 },
   { headerName: "route", field: "route_name", type: "numericColumn", width: 150 },
   { headerName: "details", field: "route_description", type: "numericColumn", width: 150 },
   {
