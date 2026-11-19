@@ -17,8 +17,7 @@ interface RaceOption {
 }
 
 const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
-/*   { label: "Double Lucky - Series 14 ", seasonRoundNumber: "14" },
- */  
+  { label: "Double Lucky - Series 14 ", seasonRoundNumber: "14" },
   { label: "Series EL - Series 13  ", seasonRoundNumber: "13" },
   { label: "A Dirty Dozen - Series 12 ", seasonRoundNumber: "12" },
   { label: "It Goes to 11 - Series 11 ", seasonRoundNumber: "11" },
@@ -26,7 +25,7 @@ const SEASON_ROUND_OPTIONS: SeasonRoundOption[] = [
 
 const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
 
-/*   "14": [
+  "14": [
   {
     label: "stage 1 - points - Royal Pump Room 8, Yorkshire",
     url: "https://customerzsun.blob.core.windows.net/dirt/14-s1-ZSUN-riders.json",
@@ -80,7 +79,6 @@ const RACE_OPTIONS_BY_SEASON: Record<string, RaceOption[]> = {
     url: "https://customerzsun.blob.core.windows.net/dirt/14-s6-ZSUN-teams.json",
   },
 ],
- */
   "13": [
   {
     label: "stage 0 - points - Prologue: London 8 Reverse",
